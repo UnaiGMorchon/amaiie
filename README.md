@@ -67,12 +67,14 @@ SCREENS
 5.ABOUT US: Contacto, aviso legal, privacidad y cookies.
 
 
-
+-----------IMPORTANT--------------------
 
 copiar archivo para q este dentro del contenedor
+
 docker cp users.json mongo-amaiie:/tmp/users.json
 docker cp products.json mongo-amaiie:/tmp/products.json
 
 importa a la base de datos los archivos.
+
 docker exec mongo-amaiie mongoimport -d mongo-amaiie -c users --file /tmp/users.json --jsonArray
 docker exec mongo-amaiie mongoimport -d mongo-amaiie -c products --file /tmp/products.json --jsonArray
