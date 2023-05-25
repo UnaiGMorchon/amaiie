@@ -7,7 +7,7 @@ import orderRouter from "./routers/orderRouters.js";
 import userRouter from "./routers/userRouters.js";
 import productRouter from "./routers/productRouters.js";
 import path from "path"; //para manejar rutas de archivos y directorios
-
+import cors from "cors"; //para permitir peticiones desde otros dominios
 // Mongoose server: conectamos a MongoDB desde la variable de entorno MONGODB_URI definida en .env
 dotenv.config();
 mongoose
@@ -21,7 +21,7 @@ mongoose
 
 // Servidor express: creamos una instancia de la aplicación Exoress
 const app = express();
-
+app.use(cors({origin:'*'})); // middleware que permite peticiones desde otros dominios
 app.use(express.json()); // middleware que permite recibir json en el body de las peticiones
 app.use(express.urlencoded({ extended: true })); // middleware que permite recibir datos de formularios en el body de las peticiones
 app.use(express.static("publicback")); //sirve archivos estáticos desde la carpeta publicback
@@ -41,5 +41,5 @@ app.use((error, req, res, next) => {
 //Inicializamos el servidor en el puerto 5000
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`server at http://localhost:${port}`);
+  console.log(`server at https://api.amaiie.vickypr.es`);
 });

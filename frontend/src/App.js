@@ -63,7 +63,7 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data } = await Axios.get(`/api/products/categories`);
+        const { data } = await Axios.get(`https://api.amaiie.vickypr.es/api/products/categories`);
         setCategories(data);
       } catch (err) {
         toast.error(getError(err)); //notificación de error

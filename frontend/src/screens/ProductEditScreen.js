@@ -79,7 +79,7 @@ export default function ProductEditScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`/api/products/${productId}`);
+        const { data } = await axios.get(`https://api.amaiie.vickypr.es/api/products/${productId}`);
         setProductName(data.nameproduct);
         setSlug(data.slug);
         setUser(data.user);
@@ -116,7 +116,7 @@ export default function ProductEditScreen() {
       formData.append("category", category);
       formData.append("countInStock", countInStock);
       formData.append("description", description);
-      const { data } = await axios.put(`/api/products/${productId}`, formData, {
+      const { data } = await axios.put(`https://api.amaiie.vickypr.es/api/products/${productId}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${userInfo.token}`,

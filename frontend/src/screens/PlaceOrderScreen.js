@@ -58,7 +58,7 @@ function PlaceOrderScreen() {
     try {
       dispatch({ type: "CREATE_REQUEST" });
       const { data } = await Axios.post(
-        "/api/orders",
+        "https://api.amaiie.vickypr.es/api/orders",
         {
           orderItems: cart.cartItems,
           shippingAddress: cart.shippingAddress,
@@ -131,7 +131,7 @@ function PlaceOrderScreen() {
                     <Row className='align-items-center'>
                       <Col md={6}>
                         <img
-                          src={`http://localhost:5000/fotoproducto/${item.image}`}
+                          src={`https://api.amaiie.vickypr.es/fotoproducto/${item.image}`}
                           alt={item.nameproduct}
                           className='img-fluid rounded img-thumbnail'
                         ></img>

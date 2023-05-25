@@ -57,7 +57,7 @@ export default function ProductArtistScreen() {
       dispatch({ type: "FETCH_REQUEST" });
       try {
         const products = await axios.get(
-          `/api/users/${userInfo.username}/products`
+          `https://api.amaiie.vickypr.es/api/users/${userInfo.username}/products`
         );
         const productsData = products.data;
         console.log(productsData);
@@ -77,7 +77,7 @@ export default function ProductArtistScreen() {
   const deleteHandler = async (product) => {
     if (window.confirm("Are you sure to delete?")) {
       try {
-        await axios.delete(`/api/products/${product._id}`, {
+        await axios.delete(`https://api.amaiie.vickypr.es/api/products/${product._id}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         toast.success("product deleted successfully");
@@ -124,7 +124,7 @@ export default function ProductArtistScreen() {
                 <td>
                   {" "}
                   <img
-                    src={`http://localhost:5000/fotoproducto/${product.image}`}
+                    src={`https://api.amaiie.vickypr.es/fotoproducto/${product.image}`}
                     alt={product.nameproduct}
                     className='small'
                   ></img>

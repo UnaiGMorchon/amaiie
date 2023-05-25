@@ -43,10 +43,10 @@ function ArtistScreen() {
     const fetchData = async () => {
       dispatch({ type: "FETCH_REQUEST" });
       try {
-        const response = await axios.get(`/api/users/username/${username}`);
+        const response = await axios.get(`https://api.amaiie.vickypr.es/api/users/username/${username}`);
         const userData = response.data;
 
-        const products = await axios.get(`/api/users/${username}/products`);
+        const products = await axios.get(`https://api.amaiie.vickypr.es/api/users/${username}/products`);
         const productsData = products.data;
         setProducts(productsData);
 
@@ -76,7 +76,7 @@ function ArtistScreen() {
           <div className='item2'>
             <div className='item'>
               <img
-                src={`http://localhost:5000/uploads/${user.image}`}
+                src={`https://api.amaiie.vickypr.es/uploads/${user.image}`}
                 alt={user.username}
                 className='image-artist'
               />
