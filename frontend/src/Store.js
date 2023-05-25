@@ -1,6 +1,7 @@
 import { createContext, useReducer } from "react";
 //Creamos el contexto
 export const Store = createContext();
+
 //Estado inicia de toda la info
 const initialState = {
   userInfo: localStorage.getItem("userInfo")
