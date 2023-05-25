@@ -103,7 +103,7 @@ export default function OrderScreen() {
       try {
         dispatch({ type: "PAY_REQUEST" });
         const { data } = await axios.put(
-          `https://api.amaiie.vickypr.es/api/orders/${order._id}/pay`,
+          `https://api.amaiie.umoiumi.com/api/orders/${order._id}/pay`,
           details,
           {
             headers: { authorization: `Bearer ${userInfo.token}` },
@@ -126,9 +126,12 @@ export default function OrderScreen() {
     const fetchOrder = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`https://api.amaiie.vickypr.es/api/orders/${orderId}`, {
-          headers: { authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `https://api.amaiie.umoiumi.com/api/orders/${orderId}`,
+          {
+            headers: { authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
@@ -153,9 +156,12 @@ export default function OrderScreen() {
       }
     } else {
       const loadPaypalScript = async () => {
-        const { data: clientId } = await axios.get("https://api.amaiie.vickypr.es/api/keys/paypal", {
-          headers: { authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data: clientId } = await axios.get(
+          "https://api.amaiie.umoiumi.com/api/keys/paypal",
+          {
+            headers: { authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         paypalDispatch({
           type: "resetOptions",
           value: {
@@ -181,7 +187,7 @@ export default function OrderScreen() {
     try {
       dispatch({ type: "DELIVER_REQUEST" });
       const { data } = await axios.put(
-        `https://api.amaiie.vickypr.es/api/orders/${order._id}/deliver`,
+        `https://api.amaiie.umoiumi.com/api/orders/${order._id}/deliver`,
         {},
         {
           headers: { authorization: `Bearer ${userInfo.token}` },
@@ -251,7 +257,7 @@ export default function OrderScreen() {
                     <Row className='align-items-center'>
                       <Col md={6}>
                         <img
-                          src={`https://api.amaiie.vickypr.es/fotoproducto/${item.image}`}
+                          src={`https://api.amaiie.umoiumi.com/fotoproducto/${item.image}`}
                           alt={item.name}
                           className='img-fluid rounded img-thumbnail'
                         ></img>{" "}

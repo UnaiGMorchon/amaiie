@@ -51,9 +51,12 @@ export default function UserListScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`https://api.amaiie.vickypr.es/api/users`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `https://api.amaiie.umoiumi.com/api/users`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
         dispatch({
@@ -72,9 +75,12 @@ export default function UserListScreen() {
     if (window.confirm("Are you sure to delete?")) {
       try {
         dispatch({ type: "DELETE_REQUEST" });
-        await axios.delete(`https://api.amaiie.vickypr.es/api/users/${user._id}`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        await axios.delete(
+          `https://api.amaiie.umoiumi.com/api/users/${user._id}`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         toast.success("user deleted successfully");
         dispatch({ type: "DELETE_SUCCESS" });
       } catch (error) {

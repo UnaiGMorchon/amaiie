@@ -89,9 +89,12 @@ export default function ProductListScreen() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await Axios.get(`https://api.amaiie.vickypr.es/api/products/admin?page=${page} `, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await Axios.get(
+          `https://api.amaiie.umoiumi.com/api/products/admin?page=${page} `,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
 
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {}
@@ -111,7 +114,7 @@ export default function ProductListScreen() {
       try {
         dispatch({ type: "CREATE_REQUEST" });
         const { data } = await Axios.post(
-          "https://api.amaiie.vickypr.es/api/products",
+          "https://api.amaiie.umoiumi.com/api/products",
           {},
           {
             headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -134,9 +137,12 @@ export default function ProductListScreen() {
   const deleteHandler = async (product) => {
     if (window.confirm("Are you sure to delete?")) {
       try {
-        await Axios.delete(`https://api.amaiie.vickypr.es/api/products/${product._id}`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        await Axios.delete(
+          `https://api.amaiie.umoiumi.com/api/products/${product._id}`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         toast.success("product deleted successfully");
         dispatch({ type: "DELETE_SUCCESS" });
       } catch (err) {

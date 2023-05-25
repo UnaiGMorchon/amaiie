@@ -30,10 +30,13 @@ export default function SigninScreen() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await Axios.post("https://api.amaiie.vickypr.es/api/users/signin", {
-        username,
-        password,
-      });
+      const { data } = await Axios.post(
+        "https://api.amaiie.umoiumi.com/api/users/signin",
+        {
+          username,
+          password,
+        }
+      );
       ctxDispatch({ type: "USER_SIGNIN", payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate(redirect || "/");

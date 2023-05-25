@@ -42,7 +42,7 @@ function Product(props) {
                     }}
                   >
                     <img
-                      src={`https://api.amaiie.vickypr.es/fotoproducto/${product.image}`}
+                      src={`https://api.amaiie.umoiumi.com/fotoproducto/${product.image}`}
                       alt={product.nameproduct}
                       class='img-responsive'
                     />

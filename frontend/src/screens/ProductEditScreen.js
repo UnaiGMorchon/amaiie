@@ -79,7 +79,9 @@ export default function ProductEditScreen() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`https://api.amaiie.vickypr.es/api/products/${productId}`);
+        const { data } = await axios.get(
+          `https://api.amaiie.umoiumi.com/api/products/${productId}`
+        );
         setProductName(data.nameproduct);
         setSlug(data.slug);
         setUser(data.user);
@@ -116,12 +118,16 @@ export default function ProductEditScreen() {
       formData.append("category", category);
       formData.append("countInStock", countInStock);
       formData.append("description", description);
-      const { data } = await axios.put(`https://api.amaiie.vickypr.es/api/products/${productId}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${userInfo.token}`,
-        },
-      });
+      const { data } = await axios.put(
+        `https://api.amaiie.umoiumi.com/api/products/${productId}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      );
       dispatch({
         type: "UPDATE_SUCCESS",
       });
@@ -137,7 +143,6 @@ export default function ProductEditScreen() {
     }
   };
 
- 
   //Renderiza el componente con los dampos del formulario para editar los detalles del producto
   //Si loading es true, se muestra el componente LoadingBox
   //Si error no está vacío, muestra el componente MessageBox con el mensaje de error

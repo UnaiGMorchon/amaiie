@@ -32,7 +32,9 @@ export default function CartScreen() {
   //Si la cantidad es mayor al stock se muestra una alerta y no se actualiza
   //Si hay suficiente stock envia una acción para agregar y actualizar el carrito
   const updateCartHandler = async (item, quantity) => {
-    const { data } = await Axios.get(`https://api.amaiie.vickypr.es/api/products/${item._id}`);
+    const { data } = await Axios.get(
+      `https://api.amaiie.umoiumi.com/api/products/${item._id}`
+    );
     if (data.countInStock < quantity) {
       window.alert("Sorry. Product is out of stock");
       return;
@@ -59,7 +61,7 @@ export default function CartScreen() {
         <Col md={8}>
           {cartItems.length === 0 ? (
             <MessageBox>
-             Carrito vacío <Link to='/'> Comprar</Link>
+              Carrito vacío <Link to='/'> Comprar</Link>
             </MessageBox>
           ) : (
             <ListGroup>
@@ -68,7 +70,7 @@ export default function CartScreen() {
                   <Row className='align-items-center'>
                     <Col md={4}>
                       <img
-                        src={`https://api.amaiie.vickypr.es/fotoproducto/${item.image}`}
+                        src={`https://api.amaiie.umoiumi.com/fotoproducto/${item.image}`}
                         alt={item.nameproduct}
                         className='img-fluid rounded img-thumbnail'
                       ></img>{" "}

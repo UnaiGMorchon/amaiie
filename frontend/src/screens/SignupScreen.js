@@ -36,12 +36,15 @@ export default function SignupScreen() {
       return;
     }
     try {
-      const { data } = await axios.post("https://api.amaiie.vickypr.es/api/users/signup", {
-        username,
-        email,
-        isArtist,
-        password,
-      });
+      const { data } = await axios.post(
+        "https://api.amaiie.umoiumi.com/api/users/signup",
+        {
+          username,
+          email,
+          isArtist,
+          password,
+        }
+      );
       ctxDispatch({ type: "USER_SIGNIN", payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate(redirect || "/");

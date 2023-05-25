@@ -47,7 +47,9 @@ function ProductScreen() {
     const fetchData = async () => {
       dispatch({ type: "FETCH_REQUEST" });
       try {
-        const response = await axios.get(`https://api.amaiie.vickypr.es/api/products/slug/${slug}`);
+        const response = await axios.get(
+          `https://api.amaiie.umoiumi.com/api/products/slug/${slug}`
+        );
         const productData = response.data;
         dispatch({ type: "FETCH_SUCCESS", payload: productData });
       } catch (err) {
@@ -93,7 +95,7 @@ function ProductScreen() {
       <Row>
         <Col md={6}>
           <img
-            src={`https://api.amaiie.vickypr.es/fotoproducto/${product.image}`}
+            src={`https://api.amaiie.umoiumi.com/fotoproducto/${product.image}`}
             className='img-large'
             alt={product.nameproduct}
           ></img>
@@ -111,10 +113,14 @@ function ProductScreen() {
               Descripción : <p>{product.description}</p>
             </ListGroup.Item>
             <ListGroup.Item>
-              Artista : 
+              Artista :
               <span
-               onClick={() => { window.location.href = `/user/${product.user}`;
-              }}><p>{product.user}</p></span> 
+                onClick={() => {
+                  window.location.href = `/user/${product.user}`;
+                }}
+              >
+                <p>{product.user}</p>
+              </span>
             </ListGroup.Item>
           </ListGroup>
         </Col>
